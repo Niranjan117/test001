@@ -1,0 +1,1 @@
+"https://huggingface.co/BeluBeluga/Bloom/resolve/main/cropmodel.h5"
