@@ -20,10 +20,19 @@
 			"headers": [
 				{ "key": "Cache-Control", "value": "public, max-age=86400" }
 			]
+		},
+		{
+			"source": "/(.*)",
+			"headers": [
+				{ "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }
+			]
 		}
 	],
 	"rewrites": [
 		{ "source": "/dashboard", "destination": "/dashboard.html" },
-		{ "source": "/register", "destination": "/register.html" }
+		{ "source": "/register", "destination": "/register.html" },
+		{ "source": "/dashboard.html", "destination": "/dashboard.html" },
+		{ "source": "/register.html", "destination": "/register.html" },
+		{ "source": "/(.*)", "destination": "/index.html" }
 	]
 }
