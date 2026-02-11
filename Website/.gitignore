@@ -2,6 +2,7 @@
 js/config.env.js
 js/config.env.prod.js
 js/config.env.template.js
+js/config.js
 
 # Python
 __pycache__/
