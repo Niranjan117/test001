@@ -1,6 +1,19 @@
 # Bloom - Mapping World's Harvest in Real Time
 
+**[🌐 Live Demo](https://bloom-niranjan-kandpals-projects.vercel.app)**
+
 Bloom is a full-stack agricultural intelligence system that monitors crop distribution across Indian states, predicts market saturation, and gives farmers and officials real-time planting recommendations. It was built by first collecting and training a custom TensorFlow model on regional crop imagery, which is hosted on Hugging Face for optimized cloud inference. This model powers a FastAPI backend deployed on Render, which acts as a central command hub to aggregate real-time supply statistics and simulate live satellite feeds, effectively monitoring market saturation risks. The system culminates in a responsive frontend that integrates a Retrieval-Augmented Generation (RAG) system using the Google Gemini API; this AI advisor dynamically reads the backend's live market data to provide farmers and officials with instant, data-driven planting recommendations, ensuring economic stability and food security.
+
+---
+
+## Sample Dataset Images
+
+The model is trained on satellite imagery of Indian agricultural zones:
+
+| Corn | Wheat | Sugarcane | Other |
+|------|-------|-----------|-------|
+| ![Corn](dataset/Corn/Pasture_Pasture_1.jpg) | ![Wheat](dataset/Wheat/PermanentCrop_PermanentCrop_1.jpg) | ![Sugarcane](dataset/Sugarcane/HerbaceousVegetation_HerbaceousVegetation_1.jpg) | ![Other](dataset/Other/Forest_Forest_1.jpg) |
+| ![Corn](dataset/Corn/Pasture_Pasture_10.jpg) | ![Wheat](dataset/Wheat/PermanentCrop_PermanentCrop_10.jpg) | ![Sugarcane](dataset/Sugarcane/HerbaceousVegetation_HerbaceousVegetation_10.jpg) | ![Other](dataset/Other/Forest_Forest_10.jpg) |
 
 ---
 
@@ -53,7 +66,7 @@ The deep learning core is a MobileNetV2 architecture fine-tuned with transfer le
 A FastAPI application deployed on Render that downloads the model from Hugging Face on startup and loads the regional analytics dataset. It exposes endpoints for health checks, dashboard statistics (crop distribution, farmer counts, yield averages, market demand with price trends), live feed simulation (random image classification), and direct image prediction. It also computes derived statistics like supply levels, market status flags, and per-crop trends that the frontend and AI assistant both consume.
 
 ### The Frontend
-A pure static site built with vanilla HTML, CSS, and JavaScript with no build step. The dashboard alone is roughly 2200 lines of JavaScript handling chart rendering, map interaction, real-time data fetching with polling, animated transitions, the crop suggestor algorithm, and the full AI assistant integration. All sensitive configuration (Firebase credentials, backend URL, Gemini API key) is loaded from a gitignored config file.
+A pure static site built with vanilla HTML, CSS, and JavaScript with no build step. The dashboard alone is roughly 2200 lines of JavaScript handling chart rendering, map interaction, real-time data fetching with polling, animated transitions, the crop suggestor algorithm, and the full AI assistant integration. All sensitive configuration (Firebase credentials, backend URL, Gemini API key) is loaded from a config file generated at deploy time from environment variables.
 
 ### The RAG System
 Bloom AI is not a generic chatbot. The "retrieval" component is the live data from the backend combined with structured agricultural knowledge baked into the system prompt (MSP rates, yield benchmarks, scheme details). The "generation" is Gemini synthesising that context into natural-language advice. The system prompt enforces strict formatting rules so responses render cleanly in the chat interface.
@@ -92,10 +105,16 @@ js/
   flower.js             Scroll-triggered 300-frame image sequence player
   dashboard.js          Dashboard logic, charts, map, AI assistant
   register.js           Registration form with Firestore integration
-  config.env.js         API keys and configuration (gitignored)
-  config.env.template.js  Template for required config structure
+  config.js             API keys and configuration (generated at deploy time)
+scripts/
+  generate-config.js    Builds config.js from environment variables
 assets/
   imageSequence/        300 WebP frames for landing page animation
+dataset/
+  Corn/                 Corn satellite imagery
+  Wheat/                Wheat satellite imagery
+  Sugarcane/            Sugarcane satellite imagery
+  Other/                Non-crop satellite imagery
 ```
 
 ---
@@ -104,11 +123,18 @@ assets/
 
 1. Clone the repository.
 
-2. Copy the config template and fill in your keys:
+2. Create your config file with your API keys:
    ```
-   cp js/config.env.template.js js/config.env.js
+   node scripts/generate-config.js
    ```
-   Edit `js/config.env.js` with your Firebase config, backend API URL, and Gemini API key.
+   Or set these environment variables before running:
+   ```
+   FIREBASE_API_KEY, FIREBASE_AUTH_DOMAIN, FIREBASE_PROJECT_ID,
+   FIREBASE_STORAGE_BUCKET, FIREBASE_MESSAGING_SENDER_ID,
+   FIREBASE_APP_ID, FIREBASE_MEASUREMENT_ID,
+   BACKEND_API, GEMINI_API_KEY
+   ```
+   Alternatively, create `js/config.js` manually (see `scripts/generate-config.js` for the structure).
 
 3. Serve the site with any static file server:
    ```
@@ -141,3 +167,16 @@ Live backend: `https://bloom-w0r1.onrender.com`
 - **Weather icon animations:** Inspired by a Dribbble concept by Kylor
 - **Map data:** Natural Earth via GeoJSON
 - **Tile layers:** CartoDB (light and dark variants)
+
+## Test The Website
+- https://bloom-rmh0bo8r2-niranjan-kandpals-projects.vercel.app
+
+## Sample Images
+<img width="1920" height="1080" alt="Screenshot (782)" src="https://github.com/user-attachments/assets/b9bcde6e-ea46-4e37-8068-455791854f66" />
+<img width="1920" height="1080" alt="Screenshot (776)" src="https://github.com/user-attachments/assets/b1d343d7-d140-42c8-b6e0-189cf18fb047" />
+<img width="1920" height="1080" alt="Screenshot (779)" src="https://github.com/user-attachments/assets/67946c45-e666-4823-85c5-6148b04c7d9d" />
+<img width="1920" height="1080" alt="Screenshot (778)" src="https://github.com/user-attachments/assets/9ea57af1-2c1c-43e3-8b8c-0cebf2002681" />
+
+
+
+
