@@ -1,6 +1,6 @@
 # Bloom - Mapping World's Harvest in Real Time
 
-**[🌐 Live Demo](https://bloom-niranjan-kandpals-projects.vercel.app)**
+**[🌐 Live Demo](https://bloom-neon.vercel.app?_vercel_share=q1d3CZEMBMSuWwGuwZkBqrJCclJkmkiU)**
 
 Bloom is a full-stack agricultural intelligence system that monitors crop distribution across Indian states, predicts market saturation, and gives farmers and officials real-time planting recommendations. It was built by first collecting and training a custom TensorFlow model on regional crop imagery, which is hosted on Hugging Face for optimized cloud inference. This model powers a FastAPI backend deployed on Render, which acts as a central command hub to aggregate real-time supply statistics and simulate live satellite feeds, effectively monitoring market saturation risks. The system culminates in a responsive frontend that integrates a Retrieval-Augmented Generation (RAG) system using the Google Gemini API; this AI advisor dynamically reads the backend's live market data to provide farmers and officials with instant, data-driven planting recommendations, ensuring economic stability and food security.
 
@@ -176,6 +176,7 @@ Live backend: `https://bloom-w0r1.onrender.com`
 <img width="1920" height="1080" alt="Screenshot (776)" src="https://github.com/user-attachments/assets/b1d343d7-d140-42c8-b6e0-189cf18fb047" />
 <img width="1920" height="1080" alt="Screenshot (779)" src="https://github.com/user-attachments/assets/67946c45-e666-4823-85c5-6148b04c7d9d" />
 <img width="1920" height="1080" alt="Screenshot (778)" src="https://github.com/user-attachments/assets/9ea57af1-2c1c-43e3-8b8c-0cebf2002681" />
+
 
 
 
