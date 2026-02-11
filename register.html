@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Bloom - Farmer Registration</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;700&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,500&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Quattrocento+Sans" rel="stylesheet">
+	<link rel="stylesheet" href="css/register.css">
+</head>
+<body>
+	<a href="index.html" class="team-name">
+		<h2><span>The</span> <strong>Bloom</strong></h2>
+	</a>
+
+	<label class="toggle">
+		<input type="checkbox" />
+		<div></div>
+	</label>
+
+	<div class="loading" id="loading">
+		<div class="loading-text">
+			<span class="loading-text-words">L</span>
+			<span class="loading-text-words">O</span>
+			<span class="loading-text-words">A</span>
+			<span class="loading-text-words">D</span>
+			<span class="loading-text-words">I</span>
+			<span class="loading-text-words">N</span>
+			<span class="loading-text-words">G</span>
+		</div>
+	</div>
+
+	<div class="form-container">
+		<main>
+			<hr />
+			<section>
+				<div class="dot"></div>
+				<div class="dot"></div>
+				<div class="dot"></div>
+				<div class="dot"></div>
+		<div class="form-content">
+			<h1><span>Join Our</span> <strong>Network</strong></h1>
+			<p class="subtitle">Help us map World's agricultural landscape</p>
+
+			
+			<div class="country-selector">
+				<div class="morphing-disclosure">
+					<details name="country-selector">
+						<summary>
+							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
+								<path fill-rule="evenodd" d="M11.47 5.47a.75.75 0 0 1 1.06 0l5.25 5.25a.75.75 0 1 1-1.06 1.06L12 7.061 7.28 11.78a.75.75 0 0 1-1.06-1.06l5.25-5.25Z" clip-rule="evenodd" />
+							</svg>
+							<span class="selected-country">Choose Country</span>
+							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
+								<path fill-rule="evenodd" d="M12 3.75a.75.75 0 0 1 .75.75v6.75h6.75a.75.75 0 0 1 0 1.5h-6.75v6.75a.75.75 0 0 1-1.5 0v-6.75H4.5a.75.75 0 0 1 0-1.5h6.75V4.5a.75.75 0 0 1 .75-.75Z" clip-rule="evenodd" />
+							</svg>
+						</summary>
+						<div class="content">
+							<div class="country-options">
+								<button class="country-option" data-value="india">India</button>
+							</div>
+							<input type="hidden" id="country" name="country" value="">
+						</div>
+					</details>
+				</div>
+			</div>
+
+			
+			<form id="farmerForm" class="india-form" style="display: none;">
+				<button type="submit" class="submit-btn" style="display: block; margin: 2rem auto;">Proceed</button>
+			</form>
+
+
+			</section>
+			<hr />
+		</main>
+	</div>
+
+	<script type="module" src="js/register.js"></script>
+</body>
+</html>

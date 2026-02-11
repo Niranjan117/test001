@@ -1,0 +1,14 @@
+# Private config with real API keys
+js/config.env.js
+
+# Python
+__pycache__/
+*.py[cod]
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+*.swp
